@@ -1,0 +1,399 @@
+/* ============================================================
+   Raja Sweets — Accessibility Tools Widget
+   WCAG 2.1 / 2.2 AA helper styles
+   ============================================================ */
+
+.a11y-widget-root {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  z-index: 9999;
+  font-family: Arial, Verdana, sans-serif;
+  pointer-events: none;
+}
+
+.a11y-widget-trigger {
+  pointer-events: auto;
+  width: 52px;
+  height: 52px;
+  border-radius: 8px;
+  background: #1a1a1a;
+  color: #fff;
+  border: 2px solid #fff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, transform 0.2s;
+  position: relative;
+  z-index: 3;
+}
+
+.a11y-widget-trigger:hover,
+.a11y-widget-trigger:focus-visible {
+  background: #6e1216;
+  outline: 3px solid #e0a21a;
+  outline-offset: 2px;
+}
+
+.a11y-widget-trigger .fa-wheelchair {
+  font-size: 24px;
+  line-height: 1;
+}
+
+.a11y-widget-panel {
+  pointer-events: auto;
+  display: none;
+  position: absolute;
+  bottom: calc(100% + 12px);
+  left: 0;
+  width: min(320px, calc(100vw - 40px));
+  max-height: min(70vh, 520px);
+  overflow-y: auto;
+  background: #fff;
+  border: 1px solid #e3d2af;
+  border-radius: 10px;
+  box-shadow: 0 12px 40px rgba(28, 8, 7, 0.18);
+  padding: 0;
+  z-index: 3;
+}
+
+.a11y-widget-panel.is-open {
+  display: block;
+}
+
+.a11y-widget-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 16px 12px;
+  border-bottom: 1px solid #f3e5c8;
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 1;
+}
+
+.a11y-widget-title {
+  font-size: 17px;
+  font-weight: 700;
+  color: #1c0807;
+  margin: 0;
+  font-family: Arial, Verdana, sans-serif;
+  text-transform: none;
+  letter-spacing: 0;
+  line-height: 1.3;
+}
+
+.a11y-widget-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  color: #5a4038;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.a11y-widget-close:hover,
+.a11y-widget-close:focus-visible {
+  background: #fbf3e2;
+  outline: 2px solid #e0a21a;
+}
+
+.a11y-widget-list {
+  list-style: none;
+  margin: 0;
+  padding: 8px 0;
+}
+
+.a11y-widget-item {
+  margin: 0;
+}
+
+.a11y-widget-action {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 16px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1c0807;
+  text-align: left;
+  transition: background 0.15s;
+}
+
+.a11y-widget-action:hover,
+.a11y-widget-action:focus-visible {
+  background: #fbf3e2;
+  outline: none;
+  box-shadow: inset 3px 0 0 #6e1216;
+}
+
+.a11y-widget-action[aria-pressed="true"] {
+  background: #f3e5c8;
+  font-weight: 600;
+}
+
+.a11y-widget-action svg {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+  fill: #1c0807;
+}
+
+.a11y-widget-action--reset {
+  color: #6e1216;
+  border-top: 1px solid #f3e5c8;
+  margin-top: 4px;
+}
+
+.a11y-widget-status {
+  padding: 8px 16px 12px;
+  font-size: 12px;
+  color: #5a4038;
+  border-top: 1px solid #f3e5c8;
+}
+
+.a11y-widget-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background: transparent;
+  pointer-events: none;
+}
+
+.a11y-widget-overlay.is-visible {
+  display: block;
+}
+
+.a11y-widget-root {
+  font-size: 16px !important;
+}
+
+.a11y-reading-guide {
+  display: none;
+  position: fixed;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: #6e1216;
+  box-shadow: 0 0 0 1px #1c0807, 0 2px 8px rgba(110, 18, 22, 0.5);
+  z-index: 9997;
+  pointer-events: none;
+  transform: translateY(-50%);
+}
+
+.a11y-reading-guide.is-active {
+  display: block;
+}
+
+html.a11y-readable-font,
+html.a11y-readable-font body {
+  font-family: Arial, Verdana, "Atkinson Hyperlegible", sans-serif !important;
+}
+
+html.a11y-readable-font h1,
+html.a11y-readable-font h2,
+html.a11y-readable-font h3,
+html.a11y-readable-font h4,
+html.a11y-readable-font .kicker,
+html.a11y-readable-font .btn,
+html.a11y-readable-font .dish h3,
+html.a11y-readable-font .hero h1 {
+  font-family: Arial, Verdana, "Atkinson Hyperlegible", sans-serif !important;
+}
+
+html.a11y-underline-links a {
+  text-decoration: underline !important;
+  text-underline-offset: 3px;
+}
+
+html.a11y-highlight-links a {
+  background-color: #f3e5c8 !important;
+  color: #1c0807 !important;
+  padding: 0 2px;
+  border-radius: 2px;
+  box-decoration-break: clone;
+}
+
+html.a11y-highlight-headings h1,
+html.a11y-highlight-headings h2,
+html.a11y-highlight-headings h3,
+html.a11y-highlight-headings h4,
+html.a11y-highlight-headings h5,
+html.a11y-highlight-headings h6 {
+  background-color: #fffbe8 !important;
+  color: #1c0807 !important;
+  padding: 0.15em 0.35em;
+  border-left: 4px solid #6e1216;
+  border-radius: 2px;
+}
+
+html.a11y-stop-animations *,
+html.a11y-stop-animations *::before,
+html.a11y-stop-animations *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+html.a11y-high-contrast body {
+  background: #000 !important;
+  color: #fff !important;
+}
+
+html.a11y-high-contrast .topbar,
+html.a11y-high-contrast .nav,
+html.a11y-high-contrast .nav__bar,
+html.a11y-high-contrast .hero,
+html.a11y-high-contrast .hero__strip,
+html.a11y-high-contrast .marquee,
+html.a11y-high-contrast .sec,
+html.a11y-high-contrast .split,
+html.a11y-high-contrast .split__body,
+html.a11y-high-contrast .dish,
+html.a11y-high-contrast .occ__card,
+html.a11y-high-contrast .rev,
+html.a11y-high-contrast .loc,
+html.a11y-high-contrast .faq,
+html.a11y-high-contrast .faq__i,
+html.a11y-high-contrast .cta,
+html.a11y-high-contrast .foot,
+html.a11y-high-contrast .drawer,
+html.a11y-high-contrast .carte-note,
+html.a11y-high-contrast .callbar a {
+  background: #000 !important;
+  color: #fff !important;
+  border-color: #fff !important;
+}
+
+html.a11y-high-contrast h1,
+html.a11y-high-contrast h2,
+html.a11y-high-contrast h3,
+html.a11y-high-contrast h4,
+html.a11y-high-contrast .hero h1,
+html.a11y-high-contrast .dish h3 {
+  color: #fff !important;
+}
+
+html.a11y-high-contrast p,
+html.a11y-high-contrast .hero p,
+html.a11y-high-contrast .lede,
+html.a11y-high-contrast .dish p {
+  color: #e0e0e0 !important;
+}
+
+html.a11y-high-contrast a {
+  color: #ffff00 !important;
+  text-decoration: underline !important;
+}
+
+html.a11y-high-contrast .btn {
+  background: #ffff00 !important;
+  color: #000 !important;
+  border: 2px solid #fff !important;
+}
+
+html.a11y-high-contrast .btn--ghost,
+html.a11y-high-contrast .btn--dark {
+  background: #000 !important;
+  color: #ffff00 !important;
+  border-color: #ffff00 !important;
+}
+
+html.a11y-dark-mode body {
+  background: #1c0807 !important;
+  color: #fbf3e2 !important;
+}
+
+html.a11y-dark-mode .topbar,
+html.a11y-dark-mode .nav,
+html.a11y-dark-mode .nav__bar {
+  background: #2a1210 !important;
+}
+
+html.a11y-dark-mode .hero,
+html.a11y-dark-mode .cta,
+html.a11y-dark-mode .foot,
+html.a11y-dark-mode .sec--maroon,
+html.a11y-dark-mode .drawer {
+  background: #1c0807 !important;
+}
+
+html.a11y-dark-mode .sec,
+html.a11y-dark-mode .split__body.on-cream,
+html.a11y-dark-mode .faq {
+  background: #1c0807 !important;
+}
+
+html.a11y-dark-mode .sec--white,
+html.a11y-dark-mode .split__body.on-white {
+  background: #2a1210 !important;
+}
+
+html.a11y-dark-mode .dish,
+html.a11y-dark-mode .loc,
+html.a11y-dark-mode .rev,
+html.a11y-dark-mode .faq__i,
+html.a11y-dark-mode .carte-note {
+  background: #3a1c18 !important;
+  border-color: #6a4038 !important;
+  color: #fbf3e2 !important;
+}
+
+html.a11y-dark-mode h1,
+html.a11y-dark-mode h2,
+html.a11y-dark-mode h3,
+html.a11y-dark-mode .hero h1,
+html.a11y-dark-mode .dish h3 {
+  color: #fff !important;
+}
+
+html.a11y-dark-mode p,
+html.a11y-dark-mode .lede,
+html.a11y-dark-mode .hero p,
+html.a11y-dark-mode .dish p {
+  color: #d4c4b0 !important;
+}
+
+html.a11y-enhanced-focus :focus-visible {
+  outline: 3px solid #e0a21a !important;
+  outline-offset: 3px !important;
+}
+
+@media (max-width: 680px) {
+  .a11y-widget-root {
+    bottom: 72px;
+    left: 16px;
+  }
+
+  .a11y-widget-trigger {
+    width: 48px;
+    height: 48px;
+  }
+
+  .a11y-widget-panel {
+    width: calc(100vw - 32px);
+    max-height: 65vh;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .a11y-widget-trigger,
+  .a11y-widget-action {
+    transition: none;
+  }
+}
