@@ -151,27 +151,61 @@
 
       <div class="nav__act">
         <a class="btn btn--sm btn--dark nav__catering" href="https://order.boons.io/site/catering/raja-sweets-indian-cuisine/81/y" target="_blank" rel="noopener">Catering</a>
-        <a class="btn btn--sm" href="https://order.boons.io/site/raja-sweets-indian-cuisine/81/y" target="_blank" rel="noopener">Order Online</a>
+        <a class="btn btn--sm nav__order" href="https://order.boons.io/site/raja-sweets-indian-cuisine/81/y" target="_blank" rel="noopener">Order Online</a>
         <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="drawer" aria-label="Open menu">
-          <i></i><i></i><i></i>
+          <span></span><span></span><span></span>
         </button>
       </div>
     </div>
-  </header>
 
-  <nav class="drawer" id="drawer" aria-label="Mobile">
-    <a class="d-link" href="#menu">Menu</a>
-    <a class="d-link" href="#story">Story</a>
-    <a class="d-link" href="#catering">Catering</a>
-    <a class="d-link" href="#gallery">Gallery</a>
-    <a class="d-link" href="#visit">Visit</a>
-    <div class="drawer__foot">
-      <a href="tel:+15104899100">510-489-9100</a><br>
-      Union City · Hayward<br>
-      <a class="btn btn--sm btn--gold" href="https://order.boons.io/site/catering/raja-sweets-indian-cuisine/81/y" target="_blank" rel="noopener">Catering</a>
-      <a class="link-gold" href="https://order.boons.io/site/raja-sweets-indian-cuisine/81/y" target="_blank" rel="noopener">Order Online →</a>
-    </div>
-  </nav>
+    <nav class="drawer" id="drawer" aria-label="Mobile" aria-hidden="true">
+      <a class="d-link" href="#menu">Menu</a>
+      <a class="d-link" href="#story">Story</a>
+      <a class="d-link" href="#catering">Catering</a>
+      <a class="d-link" href="#gallery">Gallery</a>
+      <a class="d-link" href="#visit">Visit</a>
+      <div class="drawer__foot">
+        <a href="tel:+15104899100">510-489-9100</a><br>
+        Union City · Hayward<br>
+        <a class="btn btn--sm btn--gold" href="https://order.boons.io/site/catering/raja-sweets-indian-cuisine/81/y" target="_blank" rel="noopener">Catering</a>
+        <a class="btn btn--sm btn--ghost drawer__order" href="https://order.boons.io/site/raja-sweets-indian-cuisine/81/y" target="_blank" rel="noopener">Order Online</a>
+      </div>
+    </nav>
+  </header>
+  <script>
+    (function () {
+      var nav = document.getElementById("nav");
+      var burger = document.getElementById("burger");
+      var panel = document.getElementById("drawer");
+      if (!nav || !burger || !panel) return;
+
+      function setOpen(open) {
+        nav.classList.toggle("is-open", open);
+        panel.classList.toggle("is-open", open);
+        burger.setAttribute("aria-expanded", open ? "true" : "false");
+        burger.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+        panel.setAttribute("aria-hidden", open ? "false" : "true");
+        document.documentElement.classList.toggle("nav-open", open);
+        if (open) nav.classList.remove("is-hidden");
+      }
+
+      burger.addEventListener("click", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        setOpen(!nav.classList.contains("is-open"));
+      });
+
+      panel.querySelectorAll("a").forEach(function (link) {
+        link.addEventListener("click", function () {
+          setOpen(false);
+        });
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") setOpen(false);
+      });
+    })();
+  </script>
 
   <main id="main">
     <span id="top"></span>

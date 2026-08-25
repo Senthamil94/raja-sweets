@@ -90,8 +90,6 @@
   /* ---- nav / progress / back to top ---- */
   (function () {
     var nav = $("#nav");
-    var burger = $("#burger");
-    var drawer = $("#drawer");
     var prog = $("#prog");
     var totop = $("#totop");
     if (!nav) return;
@@ -102,49 +100,27 @@
       var y = window.scrollY;
       nav.classList.toggle("is-stuck", y > 40);
 
-      if (!drawer.classList.contains("is-open")) {
+      if (!nav.classList.contains("is-open")) {
         nav.classList.toggle("is-hidden", y > 460 && y > last);
       }
 
       last = y;
       var height = document.documentElement.scrollHeight - window.innerHeight;
-      prog.style.width = (height > 0 ? (y / height) * 100 : 0) + "%";
-      totop.classList.toggle("is-on", y > 700);
+      if (prog) prog.style.width = (height > 0 ? (y / height) * 100 : 0) + "%";
+      if (totop) totop.classList.toggle("is-on", y > 700);
     }
 
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
 
-    totop.addEventListener("click", function () {
-      window.scrollTo({
-        top: 0,
-        behavior: REDUCED ? "auto" : "smooth"
-      });
-    });
-
-    function setDrawer(open) {
-      drawer.classList.toggle("is-open", open);
-      burger.setAttribute("aria-expanded", open ? "true" : "false");
-      burger.setAttribute("aria-label", open ? "Close menu" : "Open menu");
-      document.body.classList.toggle("is-locked", open);
-      $$("#drawer a.d-link").forEach(function (link, i) {
-        link.style.transitionDelay = open ? 0.08 + i * 0.06 + "s" : "0s";
+    if (totop) {
+      totop.addEventListener("click", function () {
+        window.scrollTo({
+          top: 0,
+          behavior: REDUCED ? "auto" : "smooth"
+        });
       });
     }
-
-    burger.addEventListener("click", function () {
-      setDrawer(!drawer.classList.contains("is-open"));
-    });
-
-    $$("#drawer a").forEach(function (link) {
-      link.addEventListener("click", function () {
-        setDrawer(false);
-      });
-    });
-
-    document.addEventListener("keydown", function (event) {
-      if (event.key === "Escape") setDrawer(false);
-    });
 
     var links = $$("#navLinks a");
     var map = {};

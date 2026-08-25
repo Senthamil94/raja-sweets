@@ -314,6 +314,15 @@ html.a11y-high-contrast .btn--dark {
   border-color: #ffff00 !important;
 }
 
+html.a11y-high-contrast .burger {
+  border-color: #fff !important;
+  background: #000 !important;
+}
+
+html.a11y-high-contrast .burger span {
+  background: #fff !important;
+}
+
 html.a11y-dark-mode body {
   background: #1c0807 !important;
   color: #fbf3e2 !important;
@@ -323,6 +332,15 @@ html.a11y-dark-mode .topbar,
 html.a11y-dark-mode .nav,
 html.a11y-dark-mode .nav__bar {
   background: #2a1210 !important;
+}
+
+html.a11y-dark-mode .burger {
+  border-color: #fbf3e2 !important;
+  background: #2a1210 !important;
+}
+
+html.a11y-dark-mode .burger span {
+  background: #fbf3e2 !important;
 }
 
 html.a11y-dark-mode .hero,
