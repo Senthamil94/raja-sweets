@@ -62,7 +62,9 @@
     root.classList.toggle('a11y-text-scaled', state.textScale !== 100);
     root.dataset.a11yTextScale = state.textScale;
 
-    document.body.style.filter = buildFilter();
+    var needsFilter =
+      state.grayscale || state.saturation !== 100 || state.brightness !== 100;
+    document.body.style.filter = needsFilter ? buildFilter() : "";
 
     toggleClass('a11y-high-contrast', state.highContrast);
     toggleClass('a11y-dark-mode', state.darkMode);

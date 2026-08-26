@@ -12,6 +12,12 @@
   pointer-events: none;
 }
 
+@media (max-width: 680px) {
+  .a11y-widget-root {
+    bottom: calc(80px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
 .a11y-widget-trigger {
   pointer-events: auto;
   width: 52px;

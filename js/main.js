@@ -287,8 +287,24 @@
   /* ---- image fallback ---- */
   $$("img").forEach(function (img) {
     img.addEventListener("error", function () {
+      if (img.closest(".nav__logo, .loader__in, .foot")) return;
       img.style.display = "none";
       if (img.parentElement) img.parentElement.classList.add("img-missing");
     });
   });
+
+  /* ---- FAQ accordion: one open at a time ---- */
+  (function () {
+    var items = $$(".faq details");
+    if (!items.length) return;
+
+    items.forEach(function (item) {
+      item.addEventListener("toggle", function () {
+        if (!item.open) return;
+        items.forEach(function (other) {
+          if (other !== item) other.open = false;
+        });
+      });
+    });
+  })();
 })();
