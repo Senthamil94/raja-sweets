@@ -287,7 +287,7 @@
   /* ---- image fallback ---- */
   $$("img").forEach(function (img) {
     img.addEventListener("error", function () {
-      if (img.closest(".nav__logo, .loader__in, .foot")) return;
+      if (img.closest(".nav__logo, .loader__in, .foot, .promo")) return;
       img.style.display = "none";
       if (img.parentElement) img.parentElement.classList.add("img-missing");
     });
@@ -306,5 +306,95 @@
         });
       });
     });
+  })();
+
+  /* ---- weekend special flyer ---- */
+  (function () {
+    var root = $("#promo");
+    if (!root) return;
+
+    var EXPIRES = Date.parse("2026-08-31T06:59:59.000Z"); /* Aug 30, 2026 11:59pm PT */
+    var KEY = "rajaPromoWeekendSpecial";
+    var closeBtn = $("#promoClose", root);
+    var lastFocus = null;
+
+    if (Date.now() > EXPIRES) return;
+
+    var dismissed = false;
+    try {
+      dismissed = sessionStorage.getItem(KEY) === "1";
+    } catch (err) {}
+    if (dismissed) return;
+
+    function setOpen(open) {
+      root.classList.toggle("is-on", open);
+      if (open) root.removeAttribute("hidden");
+      else root.setAttribute("hidden", "");
+      document.documentElement.classList.toggle("promo-open", open);
+      root.setAttribute("aria-hidden", open ? "false" : "true");
+      if (open) {
+        lastFocus = document.activeElement;
+        if (closeBtn) closeBtn.focus();
+      } else if (lastFocus && lastFocus.focus) {
+        lastFocus.focus();
+      }
+    }
+
+    function dismissedNow() {
+      try {
+        return sessionStorage.getItem(KEY) === "1";
+      } catch (err) {
+        return false;
+      }
+    }
+
+    function dismiss() {
+      try {
+        sessionStorage.setItem(KEY, "1");
+      } catch (err) {}
+      setOpen(false);
+    }
+
+    root.querySelectorAll("[data-promo-close]").forEach(function (el) {
+      el.addEventListener("click", dismiss);
+    });
+
+    document.addEventListener(
+      "keydown",
+      function (event) {
+        if (event.key !== "Escape" || !root.classList.contains("is-on")) return;
+        event.stopImmediatePropagation();
+        dismiss();
+      },
+      true
+    );
+
+    function show() {
+      if (dismissedNow()) return;
+      setOpen(true);
+    }
+
+    function whenLoaded(fn) {
+      if (document.body.classList.contains("loaded")) {
+        setTimeout(fn, REDUCED ? 0 : 400);
+        return;
+      }
+      var done = false;
+      function run() {
+        if (done) return;
+        done = true;
+        setTimeout(fn, REDUCED ? 0 : 400);
+      }
+      var obs = new MutationObserver(function () {
+        if (document.body.classList.contains("loaded")) {
+          obs.disconnect();
+          run();
+        }
+      });
+      obs.observe(document.body, { attributes: true, attributeFilter: ["class"] });
+      setTimeout(run, 3600);
+    }
+
+    whenLoaded(show);
   })();
 })();

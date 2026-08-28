@@ -2125,6 +2125,108 @@ html.nav-open .callbar {
 }
 
 /* --------------------------------------------------------------------------
+   22b. Weekend special flyer
+   -------------------------------------------------------------------------- */
+
+.promo {
+  position: fixed;
+  inset: 0;
+  z-index: 9800;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 16px calc(20px + env(safe-area-inset-bottom, 0px));
+}
+
+.promo.is-on {
+  display: flex;
+}
+
+.promo__scrim {
+  position: absolute;
+  inset: 0;
+  background: rgba(12, 4, 4, 0.72);
+}
+
+.promo__dialog {
+  position: relative;
+  z-index: 1;
+  width: min(420px, 100%);
+  max-height: min(90svh, 920px);
+  overflow: auto;
+  background: #0b1c3a;
+  border: 1px solid var(--gold);
+  box-shadow: 0 28px 60px -20px rgba(0, 0, 0, 0.7);
+  padding: 44px 16px 20px;
+  text-align: center;
+}
+
+.promo__title {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.promo__close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 40px;
+  height: 40px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1.7rem;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  background: rgba(11, 28, 58, 0.85);
+  cursor: pointer;
+}
+
+.promo__close:hover,
+.promo__close:focus-visible {
+  background: var(--gold);
+  color: var(--maroon-dk);
+  border-color: var(--gold);
+}
+
+.promo__card {
+  display: block;
+}
+
+.promo__card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.promo__code {
+  margin: 14px 0 0;
+  color: var(--gold);
+  font-weight: 800;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.promo__code strong {
+  color: #fff;
+  letter-spacing: 0.16em;
+}
+
+.promo__cta {
+  width: 100%;
+  margin-top: 14px;
+}
+
+html.promo-open {
+  overflow: hidden;
+}
+
+/* --------------------------------------------------------------------------
    23. Responsive
    -------------------------------------------------------------------------- */
 
@@ -2274,6 +2376,10 @@ html.nav-open .callbar {
 
   .callbar {
     display: grid;
+  }
+
+  .promo {
+    padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px));
   }
 
   .totop {
