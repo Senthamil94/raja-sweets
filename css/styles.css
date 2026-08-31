@@ -778,12 +778,12 @@ body.loaded .loader {
 }
 
 .hero__bg--hall {
-  background-image: url("https://www.rajasweets.com/wp-content/uploads/2025/11/o-12.jpg");
+  background-image: url("../assets/photos/banquet-hall.jpg");
   background-position: center 40%;
 }
 
 .hero__bg--counter {
-  background-image: url("https://www.rajasweets.com/wp-content/uploads/2025/11/2021-02-14.webp");
+  background-image: url("../assets/photos/union-city-counter.jpg");
   background-position: center 35%;
 }
 
