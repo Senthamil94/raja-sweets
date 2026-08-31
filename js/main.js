@@ -310,8 +310,9 @@
 
   /* ---- weekend special flyer ---- */
   (function () {
+    var PROMO_ENABLED = false;
     var root = $("#promo");
-    if (!root) return;
+    if (!PROMO_ENABLED || !root) return;
 
     var EXPIRES = Date.parse("2026-08-31T06:59:59.000Z"); /* Aug 30, 2026 11:59pm PT */
     var KEY = "rajaPromoWeekendSpecial";

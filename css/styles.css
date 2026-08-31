@@ -2151,13 +2151,16 @@ html.nav-open .callbar {
 .promo__dialog {
   position: relative;
   z-index: 1;
-  width: min(420px, 100%);
-  max-height: min(90svh, 920px);
-  overflow: auto;
+  width: min(420px, calc(100vw - 32px));
+  max-height: calc(100svh - 40px - env(safe-area-inset-bottom, 0px));
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
   background: #0b1c3a;
   border: 1px solid var(--gold);
   box-shadow: 0 28px 60px -20px rgba(0, 0, 0, 0.7);
-  padding: 44px 16px 20px;
+  padding: 44px 12px 14px;
   text-align: center;
 }
 
@@ -2194,17 +2197,24 @@ html.nav-open .callbar {
 }
 
 .promo__card {
-  display: block;
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 0;
+  align-items: center;
+  justify-content: center;
 }
 
 .promo__card img {
   width: 100%;
   height: auto;
+  max-height: calc(100svh - 150px - env(safe-area-inset-bottom, 0px));
   display: block;
+  object-fit: contain;
 }
 
 .promo__code {
-  margin: 14px 0 0;
+  margin: 0;
+  flex: none;
   color: var(--gold);
   font-weight: 800;
   font-size: 0.78rem;
@@ -2215,11 +2225,6 @@ html.nav-open .callbar {
 .promo__code strong {
   color: #fff;
   letter-spacing: 0.16em;
-}
-
-.promo__cta {
-  width: 100%;
-  margin-top: 14px;
 }
 
 html.promo-open {
@@ -2380,6 +2385,14 @@ html.promo-open {
 
   .promo {
     padding-bottom: calc(76px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .promo__dialog {
+    max-height: calc(100svh - 116px - env(safe-area-inset-bottom, 0px));
+  }
+
+  .promo__card img {
+    max-height: calc(100svh - 226px - env(safe-area-inset-bottom, 0px));
   }
 
   .totop {
