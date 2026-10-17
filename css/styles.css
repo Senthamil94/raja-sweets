@@ -1531,7 +1531,7 @@ body.loaded .hero h1 .ln:nth-child(3) > span {
 }
 
 .gal figure:nth-child(9) {
-  grid-column: span 2;
+  grid-column: span 3;
 }
 
 /* --------------------------------------------------------------------------
@@ -2284,6 +2284,10 @@ html.promo-open {
 
   .gal figure:nth-child(4) {
     grid-row: span 1;
+  }
+
+  .gal figure:nth-child(9) {
+    grid-column: span 2;
   }
 
   .foot__grid {
