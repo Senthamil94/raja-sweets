@@ -1526,6 +1526,14 @@ body.loaded .hero h1 .ln:nth-child(3) > span {
   grid-row: span 2;
 }
 
+.gal figure:nth-child(6) {
+  grid-column: span 2;
+}
+
+.gal figure:nth-child(9) {
+  grid-column: span 3;
+}
+
 /* --------------------------------------------------------------------------
    16. Reviews
    -------------------------------------------------------------------------- */
@@ -2278,7 +2286,7 @@ html.promo-open {
     grid-row: span 1;
   }
 
-  .gal figure:nth-child(6) {
+  .gal figure:nth-child(9) {
     grid-column: span 2;
   }
 
@@ -2405,7 +2413,8 @@ html.promo-open {
   }
 
   .gal figure:nth-child(1),
-  .gal figure:nth-child(6) {
+  .gal figure:nth-child(6),
+  .gal figure:nth-child(9) {
     grid-column: span 2;
   }
 
