@@ -310,12 +310,12 @@
 
   /* ---- weekend special flyer ---- */
   (function () {
-    var PROMO_ENABLED = false;
+    var PROMO_ENABLED = true;
     var root = $("#promo");
     if (!PROMO_ENABLED || !root) return;
 
-    var EXPIRES = Date.parse("2026-08-31T06:59:59.000Z"); /* Aug 30, 2026 11:59pm PT */
-    var KEY = "rajaPromoWeekendSpecial";
+    var EXPIRES = Date.parse("2026-11-09T07:59:59.000Z"); /* Nov 8, 2026 11:59pm PT */
+    var KEY = "rajaPromoDiwaliWeekend2026";
     var closeBtn = $("#promoClose", root);
     var lastFocus = null;
 
