@@ -310,7 +310,7 @@
 
   /* ---- weekend special flyer ---- */
   (function () {
-    var PROMO_ENABLED = true;
+    var PROMO_ENABLED = false;
     var root = $("#promo");
     if (!PROMO_ENABLED || !root) return;
 
